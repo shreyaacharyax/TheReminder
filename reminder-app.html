@@ -1,132 +1,130 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Stylish Reminder App</title>
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
-  <style>
-    /* General Styling */
-    body {
-      font-family: 'Roboto', sans-serif;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      background: url('https://plus.unsplash.com/premium_photo-1682629632657-4ac307921295?q=80&w=1626&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center fixed;
-      background-size: cover;
-      color: #333;
-    }
+Skip to content
+Navigation Menu
+shreyaacharyax
+TheReminder
 
-    /* Container */
-    .container {
-      background: rgba(255, 255, 255, 0.8);
-      padding: 20px;
-      border-radius: 15px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-      width: 350px;
-      text-align: center;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
+Code
+Issues
+Pull requests
+Actions
+Projects
+Wiki
+Security
+Insights
+Editing reminder-app.html in TheReminder
+BreadcrumbsTheReminder
+/
+reminder-app.html
+in
+main
 
-    /* Heading */
-    h1 {
-      font-family: 'Pacifico', cursive;
-      font-size: 36px;
-      color: #800020;
-      margin-bottom: 20px;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-    }
+Edit
 
-    /* Input Fields & Buttons */
-    input, button {
-      width: 100%;
-      padding: 12px;
-      margin: 10px 0;
-      border: none;
-      border-radius: 10px;
-      font-size: 16px;
-      box-sizing: border-box;
-    }
+Preview
+Indent mode
 
-    input {
-      background-color: #f0f0f0;
-      border: 1px solid #ddd;
-    }
+Spaces
+Indent size
 
-    button {
-      background-color: #4CAF50;
-      color: white;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
+2
+Line wrap mode
 
-    button:hover {
-      background-color: #45a049;
-    }
-
-    /* Reminders Box */
-    .reminders {
-      width: 100%;
-      margin-top: 20px;
-      padding: 15px;
-      background-color: #f9f9f9;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      max-height: 250px;
-      overflow-y: auto;
-      display: none; /* Initially hidden */
-    }
-
-    .reminder-item {
-      background: #fff;
-      margin: 8px 0;
-      padding: 15px;
-      border-radius: 10px;
-      font-size: 16px;
-      color: #333;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      transition: transform 0.3s ease-in-out;
-    }
-
-    .reminder-item:hover {
-      transform: scale(1.02);
-    }
-
-    .delete-btn {
-      background-color: #f44336;
-      color: white;
-      padding: 8px 12px;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-      font-size: 18px; /* Larger font size for the "X" */
-      width: 30px; /* Width for the X */
-      height: 30px; /* Height for the X */
-      text-align: center;
-    }
-
-    .delete-btn:hover {
-      background-color: #d7382a;
-    }
-
-    /* Clear Button */
-    .clear-btn {
-      background-color: #f44336;
-      margin-top: 20px;
-      padding: 12px;
-      width: 100%;
+No wrap
+Editing reminder-app.html file contents
+time
+nextpreviousallmatch caseregexpby word
+Replace
+replacereplace all×
+Selection deleted
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
       font-size: 16px;
       font-weight: bold;
       color: white;
@@ -144,7 +142,14 @@
   <div class="container">
     <h1>REMINDER</h1>
     <input type="text" id="reminderInput" placeholder="Enter your reminder..." />
-    <input type="datetime-local" id="dateTimeInput" placeholder="Optional Date/Time" />
+    <input[type="datetime-local"] {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background-color: #f0f0f0;
+} />
     <button id="addBtn">Add Reminder</button>
 
     <div class="reminders" id="reminderList"></div>
@@ -208,3 +213,6 @@
   </script>
 </body>
 </html>
+
+Use Control + Shift + m to toggle the tab key moving focus. Alternatively, use esc then tab to move to the next interactive element on the page.
+Editing TheReminder/reminder-app.html at main · shreyaacharyax/TheReminder
