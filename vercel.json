@@ -5,5 +5,11 @@
       "src": "reminder-app.html",
       "use": "@vercel/static"
     }
+  ],
+  "routes": [
+    {
+      "src": "/",
+      "dest": "/reminder-app.html"
+    }
   ]
 }
