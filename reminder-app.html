@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stylish Reminder App</title>
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    /* General Styling */
+    body {
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: url('images/bg.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #333;
+    }
+
+    /* Container */
+    .container {
+      background: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      width: 350px;
+      text-align: center;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* Heading */
+    h1 {
+      font-family: 'Pacifico', cursive;
+      font-size: 36px;
+      color: #800020;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Input Fields & Buttons */
+    input, button {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      box-sizing: border-box;
+    }
+
+    input {
+      background-color: #f0f0f0;
+      border: 1px solid #ddd;
+    }
+
+    button {
+      background-color: #4CAF50;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    /* Reminders Box */
+    .reminders {
+      width: 100%;
+      margin-top: 20px;
+      padding: 15px;
+      background-color: #f9f9f9;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      max-height: 250px;
+      overflow-y: auto;
+      display: none; /* Initially hidden */
+    }
+
+    .reminder-item {
+      background: #fff;
+      margin: 8px 0;
+      padding: 15px;
+      border-radius: 10px;
+      font-size: 16px;
+      color: #333;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .reminder-item:hover {
+      transform: scale(1.02);
+    }
+
+    .delete-btn {
+      background-color: #f44336;
+      color: white;
+      padding: 8px 12px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      font-size: 18px; /* Larger font size for the "X" */
+      width: 30px; /* Width for the X */
+      height: 30px; /* Height for the X */
+      text-align: center;
+    }
+
+    .delete-btn:hover {
+      background-color: #d7382a;
+    }
+
+    /* Clear Button */
+    .clear-btn {
+      background-color: #f44336;
+      margin-top: 20px;
+      padding: 12px;
+      width: 100%;
+      font-size: 16px;
+      font-weight: bold;
+      color: white;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .clear-btn:hover {
+      background-color: #d7382a;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>REMINDER</h1>
+    <input type="text" id="reminderInput" placeholder="Enter your reminder..." />
+    <input type="datetime-local" id="dateTimeInput" placeholder="Optional Date/Time" />
+    <button id="addBtn">Add Reminder</button>
+
+    <div class="reminders" id="reminderList"></div>
+    <button class="clear-btn" id="clearBtn">Clear All</button>
+  </div>
+
+  <script>
+    const addBtn = document.getElementById("addBtn");
+    const clearBtn = document.getElementById("clearBtn");
+    const reminderInput = document.getElementById("reminderInput");
+    const dateTimeInput = document.getElementById("dateTimeInput");
+    const reminderList = document.getElementById("reminderList");
+
+    // Add Reminder
+    addBtn.addEventListener("click", () => {
+      const reminderText = reminderInput.value.trim();
+      const reminderTime = dateTimeInput.value;
+
+      if (reminderText) {
+        const reminderItem = document.createElement("div");
+        reminderItem.className = "reminder-item";
+
+        // Check if date/time is provided
+        if (reminderTime) {
+          reminderItem.innerHTML = `<strong>${reminderText}</strong><br><small>At: ${new Date(reminderTime).toLocaleString()}</small>`;
+        } else {
+          reminderItem.innerHTML = `<strong>${reminderText}</strong>`;
+        }
+
+        // Add a delete button to each reminder (now just X)
+        const deleteBtn = document.createElement("button");
+        deleteBtn.className = "delete-btn";
+        deleteBtn.textContent = "X";
+        deleteBtn.onclick = () => {
+          reminderItem.remove();
+          if (reminderList.children.length === 0) {
+            reminderList.style.display = "none"; // Hide the box when no reminders left
+          }
+        };
+
+        // Append the delete button to the reminder
+        reminderItem.appendChild(deleteBtn);
+
+        // Show reminder list box
+        reminderList.style.display = "block";
+        reminderList.appendChild(reminderItem);
+
+        // Clear inputs
+        reminderInput.value = "";
+        dateTimeInput.value = "";
+      } else {
+        alert("Please enter a reminder!");
+      }
+    });
+
+    // Clear All Reminders
+    clearBtn.addEventListener("click", () => {
+      reminderList.innerHTML = "";
+      reminderList.style.display = "none"; // Hide the box when cleared
+    });
+  </script>
+</body>
+</html>
